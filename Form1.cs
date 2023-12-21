@@ -8,6 +8,11 @@ namespace Lab4
         {
             InitializeComponent();
         }
+        private void func (DataGridView dgv, int i, int j, string value1, string value2)
+        {
+
+        }
+
 
         private void btn_ok_Click(object sender, System.EventArgs e)
         {
@@ -60,6 +65,8 @@ namespace Lab4
             {
                 dgv_channel.Rows[0].Cells[i + 1].Value = ch + " (прием.)";
                 dgv_channel.Rows[i + 1].Cells[0].Value = ch + " (ист.)";
+                dgv_channel.Columns[i + 1].Width = 45;
+
                 i++;
             }
 
@@ -70,7 +77,7 @@ namespace Lab4
                 int col = 0;
                 foreach (char ch2 in ansambl.Keys)
                 {
-                    dgv_channel.Rows[row + 1].Cells[col + 1].Value = collection[ch][ch2];
+                    dgv_channel.Rows[row + 1].Cells[col + 1].Value = Math.Round(Convert.ToDouble(collection[ch][ch2]), 3);
                     col++;
                 }
                 row++;
@@ -114,7 +121,7 @@ namespace Lab4
                 int col = 0;
                 foreach (char ch2 in ansambl.Keys)
                 {
-                    dgv_channel.Rows[row + 1].Cells[col + 1].Value = collection[ch][ch2];
+                    dgv_channel.Rows[row + 1].Cells[col + 1].Value = Math.Round(Convert.ToDouble(collection[ch][ch2]), 3);
                     col++;
                 }
                 row++;
@@ -161,7 +168,7 @@ namespace Lab4
                     int col = 0;
                     foreach (char ch2 in ansambl.Keys)
                     {
-                        dgv_channel.Rows[row + 1].Cells[col + 1].Value = collection[ch][ch2];
+                        dgv_channel.Rows[row + 1].Cells[col + 1].Value = Math.Round(Convert.ToDouble(collection[ch][ch2]), 3);
                         col++;
                     }
                     row++;
@@ -198,23 +205,23 @@ namespace Lab4
                     double p = Convert.ToDouble(dgv_channel.Rows[i].Cells[j].Value);
                     if (p > 0) ce += -p * Math.Log(p) / Math.Log(2);
                 }
-            lbl_cross_res.Text = ce.ToString();
+            lbl_cross_res.Text = Math.Round(ce,4).ToString();
+            lbl_max_res.Text = Math.Round((Math.Log(dgv_channel.RowCount - 1) / Math.Log(2)), 4).ToString();
 
-            lbl_max_res.Text = (Math.Log(dgv_channel.RowCount - 1) / Math.Log(2)).ToString();
-
-            dgv_info.RowCount = 2;
-            dgv_info.ColumnCount = ansambl.Count + 1;
+            dgv_info.RowCount = ansambl.Count + 1;
+            dgv_info.ColumnCount = 2;
 
             dgv_info.Rows[0].Cells[0].Value = "Символ";
-            dgv_info.Rows[1].Cells[0].Value = "Информация";
+            dgv_info.Rows[0].Cells[1].Value = "Информация";
 
             int k = 0;
             foreach (char ch in ansambl.Keys)
             {
                 k++;
-                dgv_info.Rows[0].Cells[k].Value = ch;
-                dgv_info.Rows[1].Cells[k].Value = -Math.Log(ansambl[ch]) / Math.Log(2);
+                dgv_info.Rows[k].Cells[0].Value = ch;
+                dgv_info.Rows[k].Cells[1].Value = Math.Round(Convert.ToDouble(-Math.Log(ansambl[ch]) / Math.Log(2)), 3);
             }
         }
+
     }
 }
