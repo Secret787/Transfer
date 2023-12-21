@@ -8,11 +8,11 @@ namespace Lab4
         {
             InitializeComponent();
         }
-        private void func (DataGridView dgv, int i, int j, string value1, string value2)
+        private void func(DataGridView dgv, int i, int j, object value, int i2, int j2, object value2)
         {
-
+            dgv.Rows[i].Cells[j].Value = value;
+            dgv.Rows[i2].Cells[j2].Value = value2;
         }
-
 
         private void btn_ok_Click(object sender, System.EventArgs e)
         {
@@ -31,7 +31,6 @@ namespace Lab4
                 }
             }
 
-
             foreach (char ch in ansambl.Keys)
             {
                 collection.Add(ch, new Dictionary<char, double>());
@@ -45,14 +44,12 @@ namespace Lab4
             dgv_source.RowCount = ansambl.Count + 1;
             dgv_source.ColumnCount = 2;
 
-            dgv_source.Rows[0].Cells[0].Value = "Символ";
-            dgv_source.Rows[0].Cells[1].Value = "Частота";
+            func(dgv_source, 0, 0, "Символ", 0, 1, "Частота");
 
             int k = 1;
             foreach (var symbol in ansambl)
             {
-                dgv_source.Rows[k].Cells[0].Value = symbol.Key;
-                dgv_source.Rows[k].Cells[1].Value = Math.Round(Convert.ToDouble(symbol.Value), 3);
+                func(dgv_source, k, 0, symbol.Key, k, 1, Math.Round(Convert.ToDouble(symbol.Value), 3));
                 k++;
             }
 
@@ -63,10 +60,8 @@ namespace Lab4
             int i = 0;
             foreach (char ch in ansambl.Keys)
             {
-                dgv_channel.Rows[0].Cells[i + 1].Value = ch + " (прием.)";
-                dgv_channel.Rows[i + 1].Cells[0].Value = ch + " (ист.)";
+                func(dgv_channel, 0, i + 1, ch + " (прием.)", i + 1, 0, ch + " (ист.)");
                 dgv_channel.Columns[i + 1].Width = 45;
-
                 i++;
             }
 
@@ -95,32 +90,17 @@ namespace Lab4
                 sum_row[ch] = 0;
                 sum_col[ch] = 0;
             }
-
+            int row = 0;
             foreach (char ch in ansambl.Keys)
             {
+
+                int col = 0;
                 foreach (char ch2 in ansambl.Keys)
                 {
                     collection[ch][ch2] = r.NextDouble();
                     sum_row[ch] += collection[ch][ch2];
                     sum_col[ch2] += collection[ch][ch2];
-                }
-            }
-
-            foreach (char ch in ansambl.Keys)
-            {
-                foreach (char ch2 in ansambl.Keys)
-                {
                     collection[ch][ch2] = collection[ch][ch2] / sum_row[ch] * ansambl[ch];
-                }
-            }
-
-
-            int row = 0;
-            foreach (char ch in ansambl.Keys)
-            {
-                int col = 0;
-                foreach (char ch2 in ansambl.Keys)
-                {
                     dgv_channel.Rows[row + 1].Cells[col + 1].Value = Math.Round(Convert.ToDouble(collection[ch][ch2]), 3);
                     col++;
                 }
@@ -149,25 +129,17 @@ namespace Lab4
                         else collection[ch][ch2] = proba / (collection.Count - 1);
                         sum_row[ch] += collection[ch][ch2];
                         sum_col[ch2] += collection[ch][ch2];
+
                     }
                 }
-
-                foreach (char ch in ansambl.Keys)
-                {
-                    foreach (char ch2 in ansambl.Keys)
-                    {
-                        collection[ch][ch2] = collection[ch][ch2] / sum_row[ch] * ansambl[ch];
-                    }
-                }
-
 
                 int row = 0;
-
                 foreach (char ch in ansambl.Keys)
                 {
                     int col = 0;
                     foreach (char ch2 in ansambl.Keys)
                     {
+                        collection[ch][ch2] = collection[ch][ch2] / sum_row[ch] * ansambl[ch];
                         dgv_channel.Rows[row + 1].Cells[col + 1].Value = Math.Round(Convert.ToDouble(collection[ch][ch2]), 3);
                         col++;
                     }
@@ -179,20 +151,20 @@ namespace Lab4
                 MessageBox.Show("Неверное число: " + tbx_proba.Text, "Ошибка!!!");
             }
         }
+        private void Clear(DataGridView dgv)
+        {
+            dgv.Columns.Clear();
+            dgv.Rows.Clear();
+        }
+
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
             tbx_message.Clear();
-            dgv_channel.Columns.Clear();
-            dgv_channel.Rows.Clear();
-
-            dgv_source.Columns.Clear();
-            dgv_source.Rows.Clear();
-
-            dgv_info.Columns.Clear();
-            dgv_info.Rows.Clear();
-
-            lbl_max_res.Text = string.Empty;
+            Clear(dgv_channel);
+            Clear(dgv_source);
+            Clear(dgv_info);
+            //lbl_max_res.Text = string.Empty;
             lbl_cross_res.Text = string.Empty;
         }
 
@@ -205,21 +177,17 @@ namespace Lab4
                     double p = Convert.ToDouble(dgv_channel.Rows[i].Cells[j].Value);
                     if (p > 0) ce += -p * Math.Log(p) / Math.Log(2);
                 }
-            lbl_cross_res.Text = Math.Round(ce,4).ToString();
-            lbl_max_res.Text = Math.Round((Math.Log(dgv_channel.RowCount - 1) / Math.Log(2)), 4).ToString();
+            lbl_cross_res.Text = Math.Round(ce, 4).ToString();
+            //lbl_max_res.Text   = Math.Round((Math.Log(dgv_channel.RowCount - 1) / Math.Log(2)), 4).ToString();
 
             dgv_info.RowCount = ansambl.Count + 1;
             dgv_info.ColumnCount = 2;
-
-            dgv_info.Rows[0].Cells[0].Value = "Символ";
-            dgv_info.Rows[0].Cells[1].Value = "Информация";
 
             int k = 0;
             foreach (char ch in ansambl.Keys)
             {
                 k++;
-                dgv_info.Rows[k].Cells[0].Value = ch;
-                dgv_info.Rows[k].Cells[1].Value = Math.Round(Convert.ToDouble(-Math.Log(ansambl[ch]) / Math.Log(2)), 3);
+                func(dgv_info, k, 0, ch, k, 1, Math.Round(Convert.ToDouble(-Math.Log(ansambl[ch]) / Math.Log(2)), 3));
             }
         }
 

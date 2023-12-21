@@ -107,6 +107,7 @@
             tbx_proba.Name = "tbx_proba";
             tbx_proba.Size = new Size(112, 23);
             tbx_proba.TabIndex = 7;
+            tbx_proba.Text = "0,1";
             // 
             // btn_clear
             // 
@@ -150,14 +151,13 @@
             label4.AutoSize = true;
             label4.Location = new Point(6, 81);
             label4.Name = "label4";
-            label4.Size = new Size(151, 15);
+            label4.Size = new Size(0, 15);
             label4.TabIndex = 12;
-            label4.Text = "Максимальная энтропия :\r\n";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(6, 134);
+            label5.Location = new Point(6, 81);
             label5.Name = "label5";
             label5.Size = new Size(121, 15);
             label5.TabIndex = 13;
@@ -175,20 +175,18 @@
             // lbl_max_res
             // 
             lbl_max_res.AutoSize = true;
-            lbl_max_res.Location = new Point(61, 106);
+            lbl_max_res.Location = new Point(94, 230);
             lbl_max_res.Name = "lbl_max_res";
-            lbl_max_res.Size = new Size(38, 15);
+            lbl_max_res.Size = new Size(0, 15);
             lbl_max_res.TabIndex = 15;
-            lbl_max_res.Text = "label7";
             // 
             // lbl_cross_res
             // 
             lbl_cross_res.AutoSize = true;
-            lbl_cross_res.Location = new Point(61, 161);
+            lbl_cross_res.Location = new Point(64, 105);
             lbl_cross_res.Name = "lbl_cross_res";
-            lbl_cross_res.Size = new Size(38, 15);
+            lbl_cross_res.Size = new Size(0, 15);
             lbl_cross_res.TabIndex = 16;
-            lbl_cross_res.Text = "label8";
             // 
             // btn_solve
             // 
