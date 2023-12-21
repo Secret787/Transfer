@@ -164,8 +164,7 @@ namespace Lab4
             Clear(dgv_channel);
             Clear(dgv_source);
             Clear(dgv_info);
-            //lbl_max_res.Text = string.Empty;
-            lbl_cross_res.Text = string.Empty;
+            lbl_max_res.Text = string.Empty;
         }
 
         private void btn_solve_Click(object sender, EventArgs e)
@@ -177,19 +176,19 @@ namespace Lab4
                     double p = Convert.ToDouble(dgv_channel.Rows[i].Cells[j].Value);
                     if (p > 0) ce += -p * Math.Log(p) / Math.Log(2);
                 }
-            lbl_cross_res.Text = Math.Round(ce, 4).ToString();
-            //lbl_max_res.Text   = Math.Round((Math.Log(dgv_channel.RowCount - 1) / Math.Log(2)), 4).ToString();
+            lbl_max_res.Text = Math.Round((Math.Log(dgv_channel.RowCount - 1) / Math.Log(2)), 4).ToString();
 
-            dgv_info.RowCount = ansambl.Count + 1;
+            dgv_info.RowCount = ansambl.Count;
             dgv_info.ColumnCount = 2;
 
             int k = 0;
             foreach (char ch in ansambl.Keys)
             {
-                k++;
                 func(dgv_info, k, 0, ch, k, 1, Math.Round(Convert.ToDouble(-Math.Log(ansambl[ch]) / Math.Log(2)), 3));
+                k++;
             }
         }
+
 
     }
 }

@@ -53,9 +53,9 @@
             // 
             // tbx_message
             // 
-            tbx_message.Location = new Point(157, 9);
+            tbx_message.Location = new Point(9, 61);
             tbx_message.Name = "tbx_message";
-            tbx_message.Size = new Size(197, 23);
+            tbx_message.Size = new Size(1066, 23);
             tbx_message.TabIndex = 0;
             tbx_message.Text = "dgv_channel";
             // 
@@ -63,7 +63,7 @@
             // 
             dgv_source.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_source.ColumnHeadersVisible = false;
-            dgv_source.Location = new Point(157, 81);
+            dgv_source.Location = new Point(88, 214);
             dgv_source.Name = "dgv_source";
             dgv_source.RowHeadersVisible = false;
             dgv_source.RowTemplate.Height = 25;
@@ -73,76 +73,84 @@
             // 
             // btn_ok
             // 
-            btn_ok.Location = new Point(157, 38);
+            btn_ok.BackColor = Color.FromArgb(255, 255, 192);
+            btn_ok.Location = new Point(4, 347);
             btn_ok.Name = "btn_ok";
-            btn_ok.Size = new Size(197, 23);
+            btn_ok.Size = new Size(82, 23);
             btn_ok.TabIndex = 4;
             btn_ok.Text = "OK";
-            btn_ok.UseVisualStyleBackColor = true;
+            btn_ok.UseVisualStyleBackColor = false;
             btn_ok.Click += btn_ok_Click;
             // 
             // btn_gen
             // 
-            btn_gen.Location = new Point(459, 38);
+            btn_gen.BackColor = Color.FromArgb(255, 255, 192);
+            btn_gen.Location = new Point(291, 376);
             btn_gen.Name = "btn_gen";
-            btn_gen.Size = new Size(95, 23);
+            btn_gen.Size = new Size(82, 23);
             btn_gen.TabIndex = 5;
             btn_gen.Text = "Random";
-            btn_gen.UseVisualStyleBackColor = true;
+            btn_gen.UseVisualStyleBackColor = false;
             btn_gen.Click += btn_gen_Click;
             // 
             // bnt_sym
             // 
-            bnt_sym.Location = new Point(358, 38);
+            bnt_sym.BackColor = Color.FromArgb(255, 255, 192);
+            bnt_sym.Location = new Point(291, 347);
             bnt_sym.Name = "bnt_sym";
-            bnt_sym.Size = new Size(95, 23);
+            bnt_sym.Size = new Size(82, 23);
             bnt_sym.TabIndex = 6;
             bnt_sym.Text = "Channel";
-            bnt_sym.UseVisualStyleBackColor = true;
+            bnt_sym.UseVisualStyleBackColor = false;
             bnt_sym.Click += bnt_sym_Click;
             // 
             // tbx_proba
             // 
-            tbx_proba.Location = new Point(560, 38);
+            tbx_proba.Location = new Point(296, 318);
             tbx_proba.Name = "tbx_proba";
-            tbx_proba.Size = new Size(112, 23);
+            tbx_proba.Size = new Size(77, 23);
             tbx_proba.TabIndex = 7;
             tbx_proba.Text = "0,1";
             // 
             // btn_clear
             // 
-            btn_clear.Location = new Point(360, 12);
+            btn_clear.BackColor = Color.FromArgb(255, 128, 0);
+            btn_clear.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_clear.Location = new Point(9, 103);
             btn_clear.Name = "btn_clear";
-            btn_clear.Size = new Size(515, 23);
+            btn_clear.Size = new Size(1066, 66);
             btn_clear.TabIndex = 8;
-            btn_clear.Text = "Очистить";
-            btn_clear.UseVisualStyleBackColor = true;
+            btn_clear.Text = "ОЧИСТИТЬ";
+            btn_clear.UseVisualStyleBackColor = false;
             btn_clear.Click += btn_clear_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(41, 12);
+            label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(429, 8);
             label1.Name = "label1";
-            label1.Size = new Size(73, 15);
+            label1.Size = new Size(222, 50);
             label1.TabIndex = 9;
             label1.Text = "Сообщение";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(706, 63);
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(787, 179);
             label2.Name = "label2";
-            label2.Size = new Size(142, 15);
+            label2.Size = new Size(281, 32);
             label2.TabIndex = 10;
             label2.Text = "Информация на символ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(157, 63);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(88, 185);
             label3.Name = "label3";
-            label3.Size = new Size(192, 15);
+            label3.Size = new Size(245, 21);
             label3.TabIndex = 11;
             label3.Text = "Ансамбль источника сообщений";
             // 
@@ -157,25 +165,27 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(6, 81);
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(787, 531);
             label5.Name = "label5";
-            label5.Size = new Size(121, 15);
+            label5.Size = new Size(194, 21);
             label5.TabIndex = 13;
-            label5.Text = "Взаимная энтропия :";
+            label5.Text = "Максимальная энтропия :";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(459, 63);
+            label6.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(379, 166);
             label6.Name = "label6";
-            label6.Size = new Size(115, 15);
+            label6.Size = new Size(305, 45);
             label6.TabIndex = 14;
             label6.Text = "Канальная матрица";
             // 
             // lbl_max_res
             // 
             lbl_max_res.AutoSize = true;
-            lbl_max_res.Location = new Point(94, 230);
+            lbl_max_res.Location = new Point(1002, 537);
             lbl_max_res.Name = "lbl_max_res";
             lbl_max_res.Size = new Size(0, 15);
             lbl_max_res.TabIndex = 15;
@@ -183,26 +193,27 @@
             // lbl_cross_res
             // 
             lbl_cross_res.AutoSize = true;
-            lbl_cross_res.Location = new Point(64, 105);
+            lbl_cross_res.Location = new Point(1002, 527);
             lbl_cross_res.Name = "lbl_cross_res";
             lbl_cross_res.Size = new Size(0, 15);
             lbl_cross_res.TabIndex = 16;
             // 
             // btn_solve
             // 
-            btn_solve.Location = new Point(678, 37);
+            btn_solve.BackColor = Color.FromArgb(255, 255, 192);
+            btn_solve.Location = new Point(699, 347);
             btn_solve.Name = "btn_solve";
-            btn_solve.Size = new Size(197, 23);
+            btn_solve.Size = new Size(82, 23);
             btn_solve.TabIndex = 17;
             btn_solve.Text = "Расчитать";
-            btn_solve.UseVisualStyleBackColor = true;
+            btn_solve.UseVisualStyleBackColor = false;
             btn_solve.Click += btn_solve_Click;
             // 
             // dgv_channel
             // 
             dgv_channel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_channel.ColumnHeadersVisible = false;
-            dgv_channel.Location = new Point(358, 81);
+            dgv_channel.Location = new Point(379, 214);
             dgv_channel.Name = "dgv_channel";
             dgv_channel.RowHeadersVisible = false;
             dgv_channel.RowHeadersWidth = 20;
@@ -214,7 +225,7 @@
             // 
             dgv_info.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_info.ColumnHeadersVisible = false;
-            dgv_info.Location = new Point(678, 81);
+            dgv_info.Location = new Point(787, 214);
             dgv_info.Name = "dgv_info";
             dgv_info.RowHeadersVisible = false;
             dgv_info.RowTemplate.Height = 25;
@@ -226,7 +237,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(887, 620);
+            BackColor = Color.FromArgb(192, 255, 255);
+            ClientSize = new Size(1087, 620);
             Controls.Add(dgv_info);
             Controls.Add(dgv_channel);
             Controls.Add(btn_solve);
